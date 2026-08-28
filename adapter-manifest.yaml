@@ -1,0 +1,40 @@
+api_version: domus.ai/adapters/v1
+kind: OrchestrationAdapter
+metadata:
+  id: domus.assurance
+  name: DOMUS Assurance Adapter
+  version: 1.0.0
+spec:
+  isolation: separate-run
+  ingress_contract: domus.assurance.request/v1
+  egress_contract: domus.assurance.verdict/v1
+  orchestrator_skill: domus-assurance-orchestrate
+  worker_skills:
+    - domus-derive-acceptance-contract
+    - domus-simulate-user-journeys
+    - domus-explore-functional-risks
+    - domus-verify-cross-layer-contracts
+    - domus-audit-assurance-evidence
+    - domus-decide-release-readiness
+  required_capabilities:
+    - artifact-snapshot-read
+    - evidence-store-write
+    - policy-read
+  optional_capabilities:
+    - web-surface-driver
+    - desktop-surface-driver
+    - mobile-surface-driver
+    - api-surface-driver
+    - cli-surface-driver
+    - tui-surface-driver
+  terminal_verdicts:
+    - PASS
+    - PASS_WITH_RISK
+    - FAIL
+    - NEEDS_INPUT
+    - INCONCLUSIVE
+  safety:
+    production_default: deny
+    destructive_actions: require-explicit-approval
+    candidate_mutation: forbidden
+
