@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "domus.assurance.verdict/v1",
+  "type": "object",
+  "required": ["schema_version", "run_id", "candidate_revision", "verdict", "coverage", "findings", "residual_risks", "unknowns", "evidence_index", "approvals_required"],
+  "properties": {
+    "schema_version": { "const": "domus.assurance.verdict/v1" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "candidate_revision": { "type": "string", "minLength": 1 },
+    "verdict": { "enum": ["PASS", "PASS_WITH_RISK", "FAIL", "NEEDS_INPUT", "INCONCLUSIVE"] },
+    "coverage": { "type": "object" },
+    "findings": { "type": "array" },
+    "residual_risks": { "type": "array" },
+    "unknowns": { "type": "array" },
+    "evidence_index": { "type": "array" },
+    "approvals_required": { "type": "array" }
+  },
+  "additionalProperties": false
+}
+
