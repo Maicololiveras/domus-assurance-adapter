@@ -1,0 +1,19 @@
+schema_version: domus.assurance.request/v1
+request_id: password-recovery-001
+project_id: example-app
+candidate:
+  version: 1.2.0-rc1
+  source_revision: 8f31c2a
+  environment: staging
+artifact_snapshot:
+  requirements: { uri: docs/user-story.md, digest: "sha256:replace-me" }
+  specification: { uri: openapi.yaml, digest: "sha256:replace-me" }
+surfaces:
+  - kind: web
+    entrypoint: https://staging.example.test/recover-password
+test_results: []
+risk_policy: { profile: standard }
+authorization:
+  allowed_actions: [create-isolated-test-user, inspect-network, capture-screenshots]
+  forbidden_actions: [use-production, send-real-email, modify-shared-data]
+
