@@ -1,0 +1,5 @@
+.assurance/runs/
+*.zip
+*.log
+.DS_Store
+
